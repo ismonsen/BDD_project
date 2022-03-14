@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.service import Service
 
 @given(u'launch Chrome')
 def launch_chrome(context):
-    s = Service('chromedriver.exe')
+    s = Service('../../chromedriver.exe')
     context.driver = webdriver.Chrome(service=s)
 
 
