@@ -28,6 +28,11 @@ def click(context):
 
 @then('Verify dashboard loaded')
 def dashboard(context):
-    head = context.driver.find_element(By.XPATH, '//*[@id="content"]/div/div[1]/h1').text
-    assert head == 'Dashboard'
+    try:
+        head = context.driver.find_element(By.XPATH, '//*[@id="content"]/div/div[1]/h1').text
+    except:
+        context.driver.close()
+        assert False, 'Test Failed'
+    if head == 'Dashboard':
+        assert True, 'Test Passed'
     context.driver.close()
